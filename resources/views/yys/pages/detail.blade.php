@@ -225,7 +225,7 @@
 
 <div class="row">
     @foreach ($groupByName as $yhName=>$yuhunState)
-    <div class="col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">
