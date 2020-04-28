@@ -36,7 +36,8 @@ class YysUpdate extends Command
         if ($type == 'cheap') {
             $param = [
                 'platform_type' => 2,
-                'strength' => 50000
+                'strength' => 50000,
+                'pass_fair_show' => 1
             ];
         } else {
             $param = [];

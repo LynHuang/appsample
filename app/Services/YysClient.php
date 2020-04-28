@@ -26,7 +26,7 @@ class YysClient
         ], $params);
 
         $json = Http::withOptions(['verify' => false])
-            ->get('https://www.我不知道.com', $query)->json();
+            ->get('https://recommd.yys.cbg.163.com/cgi-bin/recommend.py', $query)->json();
 
         return YysListTransformer::transform($json['result']);
     }
@@ -44,7 +44,7 @@ class YysClient
 
         $json = Http::withOptions(['verify' => false])
             ->asForm()
-            ->post('https://www.我不知道.com', $query)->json();
+            ->post('https://yys.cbg.163.com/cgi/api/get_equip_detail', $query)->json();
 
         return YysAccountTransformer::transform($json['equip']);
     }
