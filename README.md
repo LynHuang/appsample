@@ -1,6 +1,8 @@
 # AppSample
 
-Laravel 7 @ AWS Lightsail
+This is a project written by PHP & Laravel 7.
+
+For study resean only.
 
 # Deploy on AWS Lightsail
 
