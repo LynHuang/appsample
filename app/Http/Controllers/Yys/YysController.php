@@ -37,7 +37,7 @@ class YysController extends Controller
             'yys.pages.list',
             [
                 'accountList' => YysAccountRepository::getAll([
-                    'orderBy' => ['price', 'asc']
+                    'orderBy' => ['id', 'desc']
                 ])
             ]
         );

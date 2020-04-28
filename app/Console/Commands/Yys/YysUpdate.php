@@ -10,7 +10,7 @@ use App\Repositories\YysAccountRepository;
 
 class YysUpdate extends Command
 {
-    protected $signature = 'yys:update {target} {--type=}';
+    protected $signature = 'yys:update {target} {--type=} {--value=}';
     protected $description = 'Fetch users from CBG';
 
     private $client;
@@ -39,12 +39,17 @@ class YysUpdate extends Command
                 'strength' => 50000,
                 'pass_fair_show' => 1
             ];
+        } elseif ($type == 'speed') {
+            $param = [
+                'hero_max_speed' => $this->option('value')
+            ];
         } else {
             $param = [];
         }
 
         $list = $this->client->getAccountList($param);
         $count = YysAccountRepository::saveAll($list);
+        echo 'Done. Got ' . $count . ' results.', PHP_EOL;
         Log::notice("CMD; yys:update; list; {$count} accounts");
     }
 

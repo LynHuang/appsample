@@ -18,10 +18,16 @@ class YysClient
         $query = array_merge([
             'act' => 'recommd_by_role',
             'search_type' => 'role',
-            'count' => 15,
-            'order_by' => 'price ASC',
-            'pass_fair_show' => 1,
-            'page' => 1,
+            'count' => 15, // 每页多少个
+            'order_by' => 'price ASC', // 排序
+            'pass_fair_show' => 1, // 公示期
+            'page' => 1, // 第几页
+            // 'price_min' => 299, // 最低价
+            // 'price_max' => 999900, // 最高价
+            // 'six_star_num' => 10, // 六星数
+            // 'yzg_open' => 0, // 曜之阁
+            // 'pvp_score' => 1000, // 斗技分
+            // 'hero_max_speed' => 274, // 一速（无法过滤阎魔）
             '_t' => time() . rand(100, 999),
         ], $params);
 
