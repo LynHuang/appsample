@@ -82,7 +82,7 @@ class YysYuhunJsonTransformer extends BaseTransformer
             );
             //寻找主属性
             for ($i = 2; $i <= 8; $i++) {
-                if ($data[$i] >= 30) {
+                if ($data[$i] > 24 + 8) {
                     //设置主属性
                     $inventory['attrs'][0] = [$lang[$i], 0];
                     //溢出保留
@@ -114,3 +114,18 @@ class YysYuhunJsonTransformer extends BaseTransformer
         6 => '防御加成',
     ];
 }
+
+
+/*
+"御魂ID": "5d2b35b1d2b0ed836abfd3f4",
+"御魂类型": "胧车",
+"位置": 1,
+"御魂等级": 15,
+"御魂星级": 6,
+"速度": 2.9066235423088074,
+"暴击": 0.029355334639549254,
+"效果命中": 0.035901196002960205,
+"效果抵抗": 0.30183900833129884,
+"攻击": 486.0,
+"固有属性": "效果抵抗"
+*/
