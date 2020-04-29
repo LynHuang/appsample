@@ -2,11 +2,10 @@
 
 namespace App\Console\Commands\Yys;
 
+use App\Repositories\YysAccountRepository;
+use App\Services\YysClient;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-
-use App\Services\YysClient;
-use App\Repositories\YysAccountRepository;
 
 class YysUpdate extends Command
 {
@@ -24,6 +23,7 @@ class YysUpdate extends Command
     public function handle()
     {
         $target = $this->argument('target');
+
         return $this->$target();
     }
 
@@ -31,17 +31,17 @@ class YysUpdate extends Command
     private function list()
     {
         $type = $this->option('type');
-        echo 'Fetching YYS account list: [type]' . $type, PHP_EOL;
+        echo 'Fetching YYS account list: [type]'.$type, PHP_EOL;
 
         if ($type == 'cheap') {
             $param = [
-                'platform_type' => 2,
-                'strength' => 50000,
-                'pass_fair_show' => 1
+                'platform_type'  => 2,
+                'strength'       => 50000,
+                'pass_fair_show' => 1,
             ];
         } elseif ($type == 'speed') {
             $param = [
-                'hero_max_speed' => $this->option('value')
+                'hero_max_speed' => $this->option('value'),
             ];
         } else {
             $param = [];
@@ -49,7 +49,7 @@ class YysUpdate extends Command
 
         $list = $this->client->getAccountList($param);
         $count = YysAccountRepository::saveAll($list);
-        echo 'Done. Got ' . $count . ' results.', PHP_EOL;
+        echo 'Done. Got '.$count.' results.', PHP_EOL;
         Log::notice("CMD; yys:update; list; {$count} accounts");
     }
 

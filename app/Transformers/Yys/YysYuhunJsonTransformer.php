@@ -11,14 +11,14 @@ class YysYuhunJsonTransformer extends BaseTransformer
     {
         $res = [
             'format_equip_name' => 'JSON文件用户',
-            'server_name' => '未知服务器',
-            'equip_desc' => [
-                'inventory' => []
+            'server_name'       => '未知服务器',
+            'equip_desc'        => [
+                'inventory' => [],
             ],
         ];
 
         //0御魂类型 1位置 2攻击加成 3生命加成 4速度 5暴击 6暴击伤害 7效果抵抗 8效果命中
-        $lang = array(
+        $lang = [
             2 => '攻击加成',
             3 => '生命加成',
             4 => '速度',
@@ -26,7 +26,7 @@ class YysYuhunJsonTransformer extends BaseTransformer
             6 => '暴击伤害',
             7 => '效果抵抗',
             8 => '效果命中',
-        );
+        ];
 
         /*
         attrs: (5) [Array(2), Array(2), Array(2), Array(2), Array(2)]
@@ -71,15 +71,15 @@ class YysYuhunJsonTransformer extends BaseTransformer
         $rawArr = explode('|', $yhString);
         foreach ($rawArr as $raw) {
             $data = explode(',', $raw);
-            $inventory = array(
-                'name' => $data[0],
-                'pos' => $data[1],
+            $inventory = [
+                'name'  => $data[0],
+                'pos'   => $data[1],
                 'attrs' => [
-                    [self::$mapping[$data[1]], 0]
+                    [self::$mapping[$data[1]], 0],
                 ],
                 'level' => 15,
-                'qua' => 6,
-            );
+                'qua'   => 6,
+            ];
             //寻找主属性
             for ($i = 2; $i <= 8; $i++) {
                 if ($data[$i] > 24 + 8) {
@@ -114,7 +114,6 @@ class YysYuhunJsonTransformer extends BaseTransformer
         6 => '防御加成',
     ];
 }
-
 
 /*
 "御魂ID": "5d2b35b1d2b0ed836abfd3f4",

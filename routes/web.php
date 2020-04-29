@@ -18,7 +18,6 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'yys'], function () {
-
     Route::group(['prefix' => 'cron'], function () {
         Route::get('/fetch-list', ['uses' => 'Yys\YysController@fetchList']);
         Route::get('/update-single', ['uses' => 'Yys\YysController@updateSingle']);

@@ -19,14 +19,14 @@ class YysHeroHelper
         $hereName = $hero['name'];
 
         if (method_exists(YysHeroHelper::class, $hero['name'])) {
-            return call_user_func('\App\Libraries\YysHeroHelper::' . $hero['name'], $hero);
+            return call_user_func('\App\Libraries\YysHeroHelper::'.$hero['name'], $hero);
         } else {
             return self::其他式神($hero);
         }
     }
 
-    /* ==== 在下面写所有式神的估价函数 ==== 
-    
+    /* ==== 在下面写所有式神的估价函数 ====
+
     你能获取到到的数据例子
     $hero = {
         "hp": 14977,

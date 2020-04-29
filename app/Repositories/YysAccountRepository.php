@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\YysAccount;
-use Illuminate\Database\Eloquent\Collection;
 
 class YysAccountRepository
 {
@@ -40,7 +39,7 @@ class YysAccountRepository
     }
 
     /**
-     * save single account
+     * save single account.
      */
     public static function save(array $data): ?YysAccount
     {
@@ -52,13 +51,14 @@ class YysAccountRepository
     }
 
     /**
-     * save all accounts in the list
+     * save all accounts in the list.
      */
     public static function saveAll(array $list): int
     {
         foreach ($list as $account) {
             self::save($account);
         }
+
         return sizeof($list);
     }
 

@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Yys;
 
-use Illuminate\Http\Request;
-
-use App\Services\YysClient;
 use App\Http\Controllers\Controller;
-use App\Repositories\YysAccountRepository;
-use App\Libraries\YysYuhunHelper;
 use App\Libraries\YysHeroHelper;
-use App\Transformers\Yys\YysYuhunJsonTransformer;
+use App\Libraries\YysYuhunHelper;
+use App\Repositories\YysAccountRepository;
+use App\Services\YysClient;
 use App\Transformers\Yys\YysAccountTransformer;
+use App\Transformers\Yys\YysYuhunJsonTransformer;
+use Illuminate\Http\Request;
 
 class YysController extends Controller
 {
@@ -37,8 +36,8 @@ class YysController extends Controller
             'yys.pages.list',
             [
                 'accountList' => YysAccountRepository::getAll([
-                    'orderBy' => ['id', 'desc']
-                ])
+                    'orderBy' => ['id', 'desc'],
+                ]),
             ]
         );
     }
@@ -48,7 +47,7 @@ class YysController extends Controller
         return view(
             'yys.pages.ranking',
             [
-                'accountList' => YysAccountRepository::getRanking()
+                'accountList' => YysAccountRepository::getRanking(),
             ]
         );
     }
@@ -78,18 +77,18 @@ class YysController extends Controller
         return view(
             'yys.pages.detail',
             [
-                'account' => $account,
+                'account'     => $account,
                 'groupByName' => $yuhunHelper->groupByName(),
-                'pveHeroes' => empty($account['hero']) ? [] : array_filter($account['hero'], function ($hero) {
+                'pveHeroes'   => empty($account['hero']) ? [] : array_filter($account['hero'], function ($hero) {
                     return $hero['atk'] * $hero['cpower'] / 100 > 15000
                         && $hero['set'];
                 }),
                 'pvpHeroes' => empty($account['hero']) ? [] : array_filter($account['hero'], function ($hero) {
                     return $hero['debuff'] + $hero['resist'] >= 100
-                        ||  $hero['spd'] >= 200;
+                        || $hero['spd'] >= 200;
                 }),
-                'topSpeeds' => $yuhunHelper->getTopSpeeds(),
-                'topZcSpeed' => $yuhunHelper->getTopZhaocaiSpeed()
+                'topSpeeds'  => $yuhunHelper->getTopSpeeds(),
+                'topZcSpeed' => $yuhunHelper->getTopZhaocaiSpeed(),
             ]
         );
     }
@@ -99,7 +98,6 @@ class YysController extends Controller
         return YysAccountRepository::get($sn);
     }
 
-
     /* ====== cron ====== */
 
     public function fetchList()
@@ -108,6 +106,7 @@ class YysController extends Controller
         array_walk($list, function ($account) {
             YysAccountRepository::save($account);
         });
+
         return $list;
     }
 
@@ -118,6 +117,7 @@ class YysController extends Controller
         if ($account) {
             $account = $this->client->getAccountDetail($account->sn);
             YysAccountRepository::save($account);
+
             return $account['nickname'];
         } else {
             return 'null';

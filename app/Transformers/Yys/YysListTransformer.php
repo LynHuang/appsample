@@ -16,12 +16,12 @@ class YysListTransformer extends BaseTransformer
     public static function listItem($item)
     {
         return [
-            'sn' => $item['game_ordersn'],
-            'price' => round($item['price'] / 100),
-            'nickname' => $item['format_equip_name'],
-            'platform' => $item['platform_type'],
-            'serverName' => $item['server_name'],
-            'avalableTime' => $item['pass_fair_show'] ? time() : null
+            'sn'           => $item['game_ordersn'],
+            'price'        => round($item['price'] / 100),
+            'nickname'     => $item['format_equip_name'],
+            'platform'     => $item['platform_type'],
+            'serverName'   => $item['server_name'],
+            'avalableTime' => $item['pass_fair_show'] ? time() : null,
         ];
     }
 }
