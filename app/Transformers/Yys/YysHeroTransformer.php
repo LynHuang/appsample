@@ -3,7 +3,6 @@
 namespace App\Transformers\Yys;
 
 use App\Transformers\BaseTransformer;
-use App\Libraries\YysYuhunHelper;
 
 class YysHeroTransformer extends BaseTransformer
 {
@@ -21,16 +20,16 @@ class YysHeroTransformer extends BaseTransformer
     public static function transformItem(array $item, array $yuhun = [])
     {
         $res = [
-            'name' => $item['name'],
-            'atk' => self::getValue($item['attrs']['攻击']),
-            'def' => self::getValue($item['attrs']['防御']),
-            'hp' => self::getValue($item['attrs']['生命']),
-            'crate' => self::getValue($item['attrs']['暴击']),
+            'name'   => $item['name'],
+            'atk'    => self::getValue($item['attrs']['攻击']),
+            'def'    => self::getValue($item['attrs']['防御']),
+            'hp'     => self::getValue($item['attrs']['生命']),
+            'crate'  => self::getValue($item['attrs']['暴击']),
             'cpower' => self::getValue($item['attrs']['暴击伤害']),
-            'spd' => self::getValue($item['attrs']['速度']),
+            'spd'    => self::getValue($item['attrs']['速度']),
             'debuff' => self::getValue($item['attrs']['效果命中']),
             'resist' => self::getValue($item['attrs']['效果抵抗']),
-            'set' => self::getYuhunSet($item['equips'], $yuhun),
+            'set'    => self::getYuhunSet($item['equips'], $yuhun),
         ];
 
         return $res;
@@ -62,10 +61,10 @@ class YysHeroTransformer extends BaseTransformer
                 array_unshift($res, $yh);
             }
         }
+
         return $res;
     }
 }
-
 
 /*
 

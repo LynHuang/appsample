@@ -2,8 +2,8 @@
 
 namespace App\Transformers\Yys;
 
-use App\Transformers\BaseTransformer;
 use App\Libraries\YysYuhunHelper;
+use App\Transformers\BaseTransformer;
 
 class YysYuhunTransformer extends BaseTransformer
 {
@@ -22,8 +22,8 @@ class YysYuhunTransformer extends BaseTransformer
     {
         $res = [
             'name' => $item['name'],
-            'pos' => $item['pos'],
-            'lv' => $item['level'],
+            'pos'  => $item['pos'],
+            'lv'   => $item['level'],
             'star' => $item['qua'],
         ];
 
@@ -54,17 +54,17 @@ class YysYuhunTransformer extends BaseTransformer
     }
 
     public static $mapping = [
-        'critRateAdditionVal' => ['暴击', 3],
+        'critRateAdditionVal'  => ['暴击', 3],
         'critPowerAdditionVal' => ['暴击伤害', 4],
-        'defenseAdditionRate' => ['防御加成', 3],
-        'attackAdditionRate' => ['攻击加成', 3],
-        'maxHpAdditionRate' => ['生命加成', 3],
-        'defenseAdditionVal' => ['防御', 5],
-        'attackAdditionVal' => ['攻击', 30],
-        'maxHpAdditionVal' => ['生命', 114],
-        'speedAdditionVal' => ['速度', 3],
-        'debuffResist' => ['效果抵抗', 4],
-        'debuffEnhance' => ['效果命中', 4],
+        'defenseAdditionRate'  => ['防御加成', 3],
+        'attackAdditionRate'   => ['攻击加成', 3],
+        'maxHpAdditionRate'    => ['生命加成', 3],
+        'defenseAdditionVal'   => ['防御', 5],
+        'attackAdditionVal'    => ['攻击', 30],
+        'maxHpAdditionVal'     => ['生命', 114],
+        'speedAdditionVal'     => ['速度', 3],
+        'debuffResist'         => ['效果抵抗', 4],
+        'debuffEnhance'        => ['效果命中', 4],
     ];
 
     public static function getRawAttrs(array $rattrs)
@@ -77,6 +77,7 @@ class YysYuhunTransformer extends BaseTransformer
         foreach ($attrs as $k => $v) {
             $attrs[$k] = round($v, 2);
         }
+
         return $attrs;
     }
 }
