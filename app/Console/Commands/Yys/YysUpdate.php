@@ -43,6 +43,10 @@ class YysUpdate extends Command
             $param = [
                 'hero_max_speed' => $this->option('value'),
             ];
+        } elseif ($type == 'speed') {
+            $param = [
+                'hero_max_speed' => $this->option('value')
+            ];
         } else {
             $param = [];
         }
