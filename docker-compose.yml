@@ -1,0 +1,14 @@
+version: '3'
+services:
+  lamp-appsample:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: lamp-appsample
+    container_name: lamp-appsample
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - 80:80

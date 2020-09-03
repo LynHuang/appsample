@@ -4,7 +4,17 @@ This is a project written by PHP & Laravel 7.
 
 For study resean only.
 
-# 部署本地环境
+# 用Docker部署本地环境(建议)
+
+前提先自行学习docker相关知识，安装好docker和docker-compose. linux执行失败用sudo
+
+- cd 到项目根目录
+- docker-compose up -d
+- docker-compose exec lamp-appsample bash
+- mysql -uroot -e "create database laravel" && cp .env.example .env && php artisan key:generate && php artisan migrate
+- 访问 http://localhost/yys 即可
+
+# 部署本地环境(使用PHPStudy)
 
 本项目仅供学习编程用途
 
