@@ -11,6 +11,7 @@ For study resean only.
 - cd 到项目根目录
 - docker-compose up -d
 - docker-compose exec lamp-appsample bash
+- composer install
 - mysql -uroot -e "create database laravel" && cp .env.example .env && php artisan key:generate && php artisan migrate
 - 访问 http://localhost/yys 即可
 
