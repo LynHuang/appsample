@@ -10,7 +10,7 @@ class YysAccount extends Model
 
     protected $casts = [
         'yuhun' => 'array',
-        'hero' => 'array',
+        'hero'  => 'array',
     ];
 
     public function scopeWhereNoDetail($builder)
@@ -35,6 +35,7 @@ class YysAccount extends Model
             2 => '上架中',
             6 => '买家取走',
         ];
+
         return $status[$this->status] ?? '未知';
     }
 }
