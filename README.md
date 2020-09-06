@@ -6,14 +6,25 @@ For study resean only.
 
 # 用Docker部署本地环境(建议)
 
-前提先自行学习docker相关知识，安装好docker和docker-compose. linux执行失败用sudo
+前提先自行学习docker相关知识，安装好docker. linux执行失败用sudo
 
 - cd 到项目根目录
-- docker-compose up -d
-- docker-compose exec lamp-appsample bash
-- composer install
-- mysql -uroot -e "create database laravel" && cp .env.example .env && php artisan key:generate && php artisan migrate
-- 访问 http://localhost/yys 即可
+- docker run -d --name="appsample" --publish="80:80" --volume="${PWD}:/app" --workdir="/app" kiino/lamp-laravel:latest
+
+如果你是第一启动，还要ssh进去container初始化laravel
+
+- docker exec -i -t appsample /bin/bash
+- composer install && mysql -uroot -e "create database laravel" && cp .env.example .env && php artisan key:generate && php artisan migrate && exit
+
+此时访问 http://localhost/yys 即可
+
+关闭网站
+
+- sudo docker stop appsample
+
+再次启动网站
+
+- sudo docker start appsample
 
 # 部署本地环境(使用PHPStudy)
 
